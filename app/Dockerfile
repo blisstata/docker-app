@@ -3,12 +3,18 @@ MAINTAINER srividyatata@gmail.com
 
 RUN apt-get update
 
-RUN apt-get install nodejs
+RUN apt-get -y install nodejs
+
+RUN apt-get -y install npm
 
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-COPY ./app/ .
+COPY . /usr/src/app
 
-CMD nodejs index.js
+CMD echo "Hello world"
+
+ENTRYPOINT ["node", "/usr/src/app/index.js"]
+
+EXPOSE 7777
